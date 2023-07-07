@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Even Odd Ranges </title>
+</head>
+
+<style>
+    body{
+        background-color: black;
+    }
+
+    .div1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    #a{
+        background-color: transparent;
+        width: 400px;
+        height: 50px;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        border: 2px solid whitesmoke;
+        color:  whitesmoke;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: xx-large;
+    }
+
+    #b{
+        background-color: transparent;
+        width: 400px;
+        height: 50px;
+        margin-bottom: 60px;
+        border: 2px solid whitesmoke;
+        color:  whitesmoke;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: xx-large;
+    }
+
+    button{
+        background-color: transparent;
+        color: whitesmoke;
+        height: 55px;
+        width: 200px;
+        border: 2px solid whitesmoke;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: x-large;
+        transition: border-color 0.1s ease-in-out;
+    }
+
+    button:focus{
+            border-color: rgb(4, 220, 248);
+    }
+
+    #result{
+        height: auto;
+        width: auto;
+        background-color:  rgba(23, 52, 105, 0.69);
+        color: aliceblue;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: xx-large;
+        margin: 60px;
+        padding: 20px;
+        line-height: 50px;
+        border: 2px solid rgb(39, 168, 201);
+        box-shadow: 10 10 10px rgb(211, 20, 20);
+
+    }
+</style>
+
+<script>
+    function ranges()
+    {
+        var a = parseInt(document.getElementById("a").value);
+        var b = parseInt(document.getElementById("b").value);
+
+        var even = []
+        var odd = []
+        for(let i=a; i<=b; i++)
+        {
+            if(i&1) odd.push(i);
+            else even.push(i);
+        }
+        var result = document.getElementById("result");
+        if(a>b)
+            result.innerHTML = "The first number must be equal or greater than the second number" + "<br>";
+        else
+            result.innerHTML += "Even ranges : " + even.join(" ") + "<br>" + "<br>" + "Odd ranges : " + odd.join(" ") + "<br>";
+    }
+</script>
+
+<body>
+    <div class="div1">
+        <input type="number" id="a" placeholder="Enter the first number">
+        <input type="number" id="b" placeholder="Enter the second number">
+        <button class="button" onclick="ranges()"> Calculate </button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>

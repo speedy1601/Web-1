@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: rgb(7, 6, 6);
+}
+
+#navbar{
+    height: 600px;
+    width: 1050px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 90px;
+}
+
+#nav-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    
+}
+
+.list1{
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+    font-size: 50px;
+    color: blue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.5s ease-in-out;
+}
+
+.list1:hover{
+    background-color: rgb(0, 174, 255);
+    opacity: 0.4;
+}
+
+.link1{
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: xx-large;
+    font-weight: 50px;
+    color: rgba(0, 0, 0, 0.69);
+    opacity: 1;
+    text-transform: capitalize;
+    transition: background 0.5s ease-in;
+}
+
+.link1:hover{
+    background:  rgba(12, 87, 250, 0.69);
+    transition: 0.5s;
+}
+
+.link1:focus{
+    background-color: rgb(0, 4, 255);
+}
+.container {
+    width: 300px;
+    height: 300px;
+    perspective: 600px;
+}
+  
+.cube {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+}
+  
+.face {
+    width: 300px;
+    height: 300px;
+    background: skyblue;
+    border: 2px solid black;
+    position: absolute;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+}
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: rotate3d(1, 1, 0, 45deg);
+}
+
+.front {
+    transform: translateZ(100px);
+}
+
+.back {
+    transform: translateZ(-100px) rotateY(180deg);
+}
+
+.left {
+    transform: translateX(-100px) rotateY(-90deg);
+}
+  
+.right {
+    transform: translateX(100px) rotateY(90deg);
+}
+
+.top {
+    transform: translateY(-100px) rotateX(90deg);
+}
+  
+.bottom {
+    transform: translateY(100px) rotateX(-90deg);
+}
+
+@keyframes turn {
+    from { transform: rotate3d(0, 0, 0, 0); }
+    to { transform: rotate3d(1, 1, 0, 360deg); }
+}
+  
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: turn 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cube {
+      animation: none;
+      transform: rotate3d(0, 0, 0, 90deg);
+    }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+
+        .div1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        #a{
+            background-color: transparent;
+            width: 400px;
+            height: 50px;
+            margin: 60px;
+            border: 2px solid whitesmoke;
+            color:  whitesmoke;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: xx-large;
+        }
+
+        button{
+            background-color: transparent;
+            color: whitesmoke;
+            height: 55px;
+            width: 200px;
+            border: 2px solid whitesmoke;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: x-large;
+            transition: border-color 0.1s ease-in-out;
+        }
+
+        button:focus{
+            border-color: rgb(4, 220, 248);
+        }
+
+        #result{
+            height: auto;
+            width: auto;
+            background-color:  rgba(23, 52, 105, 0.69);
+            color: aliceblue;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: xx-large;
+            margin: 60px;
+            padding: 20px;
+            line-height: 50px;
+            border: 2px solid rgb(39, 168, 201);
+            box-shadow: 10 10 10px rgb(211, 20, 20);
+
+        }
+    </style>
+
+    <script>
+        function countPrimes() {
+            var n = parseInt(document.getElementById("a").value);
+            n += 1;
+            const sieve = new Array(n + 1).fill(true);
+            sieve[0] = false;
+            sieve[1] = false;
+
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (sieve[i]) {
+                    for (let j = i * i; j < n; j += i) {
+                        sieve[j] = false;
+                    }
+                }
+            }
+
+            const ans = [];
+            for (let i = 0; i < n; i++) {
+                if (sieve[i]) {
+                    ans.push(i);
+                }
+            }
+            var result = document.getElementById("result");
+            if(n-1<0)
+                result.innerHTML = "Plz enter positive number!"
+            else if(n-1 <= 2)
+                result.innerHTML = "There are no prime numbers from 0 to " + (n - 1) + "<br>";
+            else{
+                result.innerHTML = "There are " + ans.length + " prime numbers from 0 to " + (n - 1) + " : " + "<br>";
+                result.innerHTML += ans.join(" ") + "<br>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="div1">
+        <input type="number" id="a" placeholder="Enter a number">
+        <button class="button" onclick="countPrimes()">Calculate</button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
